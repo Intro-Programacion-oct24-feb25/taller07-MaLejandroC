@@ -16,30 +16,39 @@ public class Problema04 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        int signo = 1;
+        int signo = +1;
         double fraccion;
-        double numerador = 1.00;
-        int denominador = 1;
+        int numerador = 1;
+        double denominador = 1;
         int contador = 1;
         int limite = 8;
         double suma = 0; 
+        String cadena = "";
         
         while (contador <= limite) { 
-            fraccion = numerador/denominador;
             
+            fraccion = numerador/denominador;
+                        
             suma = suma + (signo*fraccion);
                         
+            if (contador == 1) { 
+                cadena = String.format("%d", numerador);
+            } else if (signo == 1) {
+                cadena = String.format("%s + %d/%.0f", cadena, numerador, denominador);
+            } else {
+                cadena = String.format("%s - %d/%.0f", cadena, numerador, denominador);
+            }
+            
             signo = signo * -1;
             
             denominador = denominador + 2;
-            
-            
+
             contador = contador + 1;
             
             
         }
-        
-        System.out.printf("%.2f",suma);
+        System.out.printf("Serie:%s%n", cadena);
+        System.out.printf("Resultado: %.2f%n", suma);
     }
     
 }
